@@ -1,0 +1,22 @@
+{
+  "name": "soccr",
+  "version": "0.0.1",
+  "authors": [
+    "Gerardo Moad <gerardo@gerardomoad.com>"
+  ],
+  "description": "kickass football (soccer) app",
+  "main": "app.js",
+  "license": "GPL 3",
+  "private": true,
+  "dependencies": {
+    "jquery": "*",
+    "jquery.ui": "*"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
