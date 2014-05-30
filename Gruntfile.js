@@ -36,7 +36,26 @@ module.exports = function(grunt) {
                     'client/build/js/dep/jquery.min.js': ['bower_components/jquery/dist/jquery.min.js']
                 }
             }
-        }
+        },
+        shell: {
+            'jsx-shared': {
+                command: "node ./node_modules/react-tools/bin/jsx shared/src/jsx shared/build/js"
+            },
+            'jsx-server': {
+                command: "node ./node_modules/react-tools/bin/jsx server/src/jsx server/build/js"
+            },
+            'jsx-client': {
+                command: "node ./node_modules/react-tools/bin/jsx client/src/jsx client/build/js/prebrowserify"
+            }
+        },
+        browserify: {
+            './client/build/js/soccr.js': ['./client/build/js/prebrowserify/soccr.js']
+        },
+        clean: [
+            './client/build',
+            './shared/build',
+            './server/build'
+        ]
     });
 
     // Load the plugin that provides the "uglify" task.
@@ -49,10 +68,17 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-bower-install-simple");
     // Load concat
     grunt.loadNpmTasks("grunt-contrib-concat");
+    // Load shell
+    grunt.loadNpmTasks("grunt-shell");
+    // Load browserify
+    grunt.loadNpmTasks('grunt-browserify');
+    // Load clean
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     grunt.registerTask('bower', ['bower-install-simple', 'concat']);
+    grunt.registerTask('jsx', ['shell:jsx-shared', 'shell:jsx-server', 'shell:jsx-client']);
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'sass', 'copy', 'bower']);
+    grunt.registerTask('default', ['uglify', 'sass', 'copy', 'bower', 'jsx', 'browserify']);
 };
 
 /* vim: expandtab:tabstop=4:softtabstop=4:shiftwidth=4:set filetype=javascript: */

@@ -4,3 +4,4 @@ node_modules
 client/build
 .sass-cache
 bower_components
+.module-cache
