@@ -33,7 +33,9 @@ module.exports = function(grunt) {
         concat: {
             jquery: {
                 files: {
-                    'client/build/js/dep/jquery.min.js': ['bower_components/jquery/dist/jquery.min.js']
+                    'client/build/js/dep/jquery.js': ['bower_components/jquery/dist/jquery.js'],
+                    'client/build/js/dep/backbone.js': ['bower_components/backbone/backbone.js'],
+                    'client/build/js/dep/underscore.js': ['bower_components/underscore/underscore.js']
                 }
             }
         },

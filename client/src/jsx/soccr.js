@@ -1,32 +1,57 @@
+/** @jsx React.DOM */
+
+var React = require('react');
 var _ = require('lodash');
-var shared = require('../../../shared/build/js/app.js');
+var shared = require('../../../../shared/build/js/app.js');
+
+var InterfaceComponent = shared.InterfaceComponent;
+
+console.log('ehlos');
+/*var routes = _.map(shared.pages, function (page, routeName) {
+    var paramNames = page.paramNames;
+
+    return function () {
+        var params = {};
+        _.forOwn(paramNames, function (paramName, idx) {
+            params[paramName] = arguments(idx);
+        });
+        console.log("params for route '" + routeName + "': " + JSON.stringify(params));
+        //func.call(params);
+        React.renderComponent(
+            <InterfaceComponent router="" clientOrServer="client"/>,
+            document.html
+        );
+    }
+});*/
+var routes = {
+    '': 'home',
+    'fake': 'fake'
+};
 
 var Router = Backbone.Router.extend({
-    _.map(shared.clientRoutes, function (route) {
-    })
-    routes: {
-        '/': function () {
-        },
-        '': function () {
-        }
+    routes: routes,
+
+    home: function () {
+        console.log('home!');
+        React.renderComponent(
+            <InterfaceComponent router="" clientOrServer="server"/>,
+            document
+        );
+    },
+
+    fake: function () {
+        console.log('fake');
     }
 });
 
+console.log("Router: " + Router);
+
 var router = new Router();
 
-//app.use(serve('./client/build'));
+Backbone.history.start();
 
-_.forEach(shared.clientRoutes, function (clientRoute) {
-    appReact.get(serverRoute.route, function *(next) {
-        yield next;
-        var markup = serverRoute.server(this.params);
-        this.body = markup;
-    });
-});
+router.navigate('', {trigger: true});
+router.navigate('home', {trigger: true});
+router.navigate('fake', {trigger: true});
 
-/*appReact.get('/', function *(next) {
-    console.log('hier');
-    yield next;
-    this.body = shared.serverRoutes render();
-});*/
-
+console.log('done navigating?');

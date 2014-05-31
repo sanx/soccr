@@ -11,7 +11,8 @@
   "dependencies": {
     "jquery": "*",
     "jquery.ui": "*",
-    "backbone": "~1.1.2"
+    "backbone": "~1.1.2",
+    "underscore": "~1.6.0"
   },
   "ignore": [
     "**/.*",

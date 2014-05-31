@@ -258,7 +258,11 @@ var Layout = React.createClass({
               </BSColumn>
             </BSRow>
           </BSContainer>
-          <script src="/client.js" />
+          <div id="clientDiv" />
+          <script src="/static/js/dep/underscore.js" />
+          <script src="/static/js/dep/jquery.js" />
+          <script src="/static/js/dep/backbone.js" />
+          <script src="/static/js/soccr.js" />
         </body>
       </html>
     )

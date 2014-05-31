@@ -7,44 +7,79 @@ var _ = require('lodash');
 var Layout = bs.Layout;
 var Widget = bs.Widget;
 
-var pages = [
-    {
-        route: '/',
-        server: function (params) {
+var FooComponent = React.createClass({
+    'render': function () {
+        var router = this.props.router,
+            clientOrServer = this.props.clientOrServer;
+
+        return (
+            <p>client or server, you ask? "{clientOrServer}"</p>
+        );
+    }
+});
+
+var BarComponent = React.createClass({
+    'render': function () {
+        var router = this.props.router,
+            clientOrServer = this.props.clientOrServer;
+
+        return (
+            <p>client or server, you ask? "{clientOrServer}"</p>
+        );
+    }
+});
+
+var InterfaceComponent = React.createClass({
+    'render': function () {
+        var router = this.props.router,
+            clientOrServer = this.props.clientOrServer;
+
+        return (
+            <Layout router={router}>
+                <table>
+                <tr>
+                <td>
+                    <FooComponent router={router} clientOrServer={clientOrServer} />
+                </td>
+                <td>
+                    <BarComponent router={router} clientOrServer={clientOrServer} />
+                </td>
+                </tr>
+                </table>
+            </Layout>
+        );
+    }
+});
+
+var pages = {
+    '/': {
+        /*'func': function (params) {
             console.log('route /');
             var component = (
-                <Layout>
-                    <h4>Home</h4>
-                    <p><div id="client"></div></p>
-                </Layout>
+                <InterfaceComponent router=
             );
-            var markup = React.renderComponentToString(component);
-            return markup;
-        },
-        client: function (params) {
-            console.log('nothing to do on client for route /');
-        }
+            return component;
+            //var markup = React.renderComponentToString(component);
+            //return markup;
+        },*/
+        'paramNames': []
     },
-    {
-        route: '/posts/:id',
-        server: function (params) {
+    '/posts/:id': {
+        /*'func': function (params) {
+            console.log('route /posts/:id');
             var component = (
                 <Layout>
                     <p>From server: <Widget clientOrServer="server" postId={params.id}/></p>
                     <p><div id="client"></div></p>
                 </Layout>
             );
-            var markup = React.renderComponentToString(component);
-            return markup;
-        },
-        client: function (params) {
-            React.renderComponent(
-                <Widget clientOrServer="client" postId={params.id} />,
-                document.getElementById('client')
-            );
-        }
+            return component;
+            //var markup = React.renderComponentToString(component);
+            //return markup;
+        },*/
+        'paramNames': ['id']
     }
-];
+};
 
 /*var Widget = React.createClass({
     render: function () {
@@ -55,13 +90,7 @@ var pages = [
     <h1>Hello, world!</h1>,
     document.getElementById('example')
 );*/
-var serverRoutes = _.map(pages, function (page) {
-    return _.omit(page, ['client']);
-});
-var clientRoutes = _.map(pages, function (page) {
-    return _.omit(page, ['server']);
-});
 
 module.exports.bs = bs;
-module.exports.serverRoutes = serverRoutes;
-module.exports.clientRoutes = clientRoutes;
+module.exports.pages = pages;
+module.exports.InterfaceComponent = InterfaceComponent;
