@@ -3,9 +3,9 @@ var dsFactory = function (nconf) {
     if ('mock' === nconf.get('data:source')) {
         Ds = require('./ds.mock.js');
         return new Ds();
-    } else if ('development' === nconf.get('data:source')) {
-        Ds = require('./ds.development.js');
-        return new Ds(nconf.data);
+    } else if ('mysql' === nconf.get('data:source')) {
+        Ds = require('./ds.mysql.js');
+        return new Ds(nconf.get('data:dbConfig'));
     } else {
         return false;
     }

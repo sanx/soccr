@@ -5,3 +5,4 @@ client/build
 .sass-cache
 bower_components
 .module-cache
+build

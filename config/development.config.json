@@ -1,0 +1,10 @@
+{
+    "data": {
+        "source": "mysql",
+        "dbConfig": {
+            "host": "localhost",
+            "database": "soccr",
+            "connectionLimit": 10
+        }
+    }
+}
