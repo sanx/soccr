@@ -9,6 +9,7 @@ CREATE TABLE `teams`(
     `codename` varchar(16) NOT NULL,
     `name` varchar(64) NOT NULL,
     `countrycode` varchar(16) NOT NULL,
+    `fifa_json` text NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -16,6 +17,7 @@ CREATE TABLE `players`(
     `id` int AUTO_INCREMENT NOT NULL,
     `name` varchar(128) NOT NULL,
     `countrycode` varchar(16) NOT NULL,
+    `fifa_json` text NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -24,6 +26,7 @@ CREATE TABLE matches(
     `venue_id` int NOT NULL,
     `start_time` timestamp NOT NULL,
     `end_time` timestamp NOT NULL,
+    `fifa_json` text NOT NULL,
     PRIMARY KEY (`id`)
 );
 
