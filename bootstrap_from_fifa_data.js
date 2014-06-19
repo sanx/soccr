@@ -8,7 +8,7 @@ var NODE_ENV = process.env.NODE_ENV,
     pool,
     poolQuery,
     poolEnd,
-    fsRead = Q.nfbind(fs.readFile);
+    fsRead = Q.denodeify(fs.readFile);
 
 nconf.argv().env().file({file: './config/'+NODE_ENV+'.config.json'});
 

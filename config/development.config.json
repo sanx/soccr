@@ -1,4 +1,10 @@
 {
+    "sources": {
+        "fifa": {
+            "domain": "www.fifa.com",
+            "all_matches_path": "/worldcup/matches/index.html"
+        }
+    },
     "data": {
         "source": "mysql",
         "dbConfig": {

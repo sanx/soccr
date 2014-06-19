@@ -16,7 +16,9 @@
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-shell": "^0.7.0",
     "jsdom": "^0.10.6",
-    "react-tools": "^0.10.0"
+    "react-tools": "^0.10.0",
+    "request": "^2.36.0",
+    "shelljs": "^0.3.0"
   },
   "dependencies": {
     "koa": "^0.6.1",
