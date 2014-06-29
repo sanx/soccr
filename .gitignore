@@ -6,3 +6,4 @@ client/build
 bower_components
 .module-cache
 build
+.DS_Store

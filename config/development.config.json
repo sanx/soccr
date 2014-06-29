@@ -1,6 +1,9 @@
 {
     "sources": {
         "fifa": {
+            "useCacheMatchesPage": true,
+            "useCacheMatchPages": true,
+            "useCachePdfs": false,
             "domain": "www.fifa.com",
             "all_matches_path": "/worldcup/matches/index.html"
         }
