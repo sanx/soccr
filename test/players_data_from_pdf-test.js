@@ -20,9 +20,10 @@ describe("lib/players_data_from_pdf", function () {
     });
 
     it.only("should return meaningful data given a proper pdf", function () {
+        console.log("here at test, my little droogies");
         return PlayersDataFromPdf('test/data/downloaded_match_1_bra.pdf')
             .then(function (playersStats) {
-                console.log(playersStats);
+                console.log(JSON.stringify(playersStats, ' ', 4));
             });
     });
 });
